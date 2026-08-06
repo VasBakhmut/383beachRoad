@@ -1,0 +1,12 @@
+{
+  version: 2,
+  mediaFileName: 'beaumaris_graund_floor.mp4',
+  cutSegments: [
+    {
+      start: 0.940925,
+      end: 4.833159789583333,
+      name: '',
+      selected: true,
+    },
+  ],
+}

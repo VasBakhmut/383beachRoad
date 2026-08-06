@@ -1,0 +1,4 @@
+ignoredBuiltDependencies:
+  - ffmpeg-static
+  - sharp
+  - unrs-resolver

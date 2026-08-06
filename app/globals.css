@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+:root {
+  --bg-light: #faf9f6;
+  --fg-light: #16150f;
+  --bg-dark: #0a0a0a;
+  --fg-dark: #f4f3ee;
+  --muted-light: #6b6a62;
+  --muted-dark: #9a988e;
+  --line-light: rgba(22, 21, 15, 0.12);
+  --line-dark: rgba(244, 243, 238, 0.14);
+  --panel-light: rgba(22, 21, 15, 0.04);
+  --panel-dark: rgba(244, 243, 238, 0.06);
+
+  --theme-t: 0;
+  --nav-h: 5.5rem;
+
+  --bg: color-mix(in srgb, var(--bg-dark) calc(var(--theme-t) * 100%), var(--bg-light));
+  --fg: color-mix(in srgb, var(--fg-dark) calc(var(--theme-t) * 100%), var(--fg-light));
+  --muted: color-mix(in srgb, var(--muted-dark) calc(var(--theme-t) * 100%), var(--muted-light));
+  --line: color-mix(in srgb, var(--line-dark) calc(var(--theme-t) * 100%), var(--line-light));
+  --panel: color-mix(in srgb, var(--panel-dark) calc(var(--theme-t) * 100%), var(--panel-light));
+  --accent: #8a7f68;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-panel: var(--panel);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+}
+
+* {
+  border-color: var(--line);
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+body {
+  font-family: var(--font-body);
+  overscroll-behavior-y: none;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+::selection {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.hairline {
+  height: 1px;
+  background: var(--line);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* Lenis smooth-scroll defaults */
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
