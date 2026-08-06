@@ -19,42 +19,30 @@ export default function Gallery() {
       const track = trackRef.current;
       if (!section || !track) return;
 
-      const mm = gsap.matchMedia();
+      // Same pinned, vertical-scroll-drives-horizontal-move technique on
+      // every screen size — mobile included.
+      const getDistance = () => track.scrollWidth - section.clientWidth;
 
-      // Pinned, scroll-driven horizontal reel — desktop only. Below the
-      // breakpoint the browser's own touch scrolling takes over (see
-      // overflow-x-auto on the section), which is far more reliable on touch.
-      mm.add("(min-width: 768px)", () => {
-        const getDistance = () => track.scrollWidth - section.clientWidth;
-
-        const tween = gsap.to(track, {
-          x: () => -getDistance(),
-          ease: "none",
-          scrollTrigger: {
-            trigger: section,
-            start: "top top",
-            end: () => `+=${getDistance()}`,
-            scrub: 0.6,
-            pin: true,
-            invalidateOnRefresh: true,
-          },
-        });
-
-        return () => tween.kill();
+      const tween = gsap.to(track, {
+        x: () => -getDistance(),
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          start: "top top",
+          end: () => `+=${getDistance()}`,
+          scrub: 0.6,
+          pin: true,
+          invalidateOnRefresh: true,
+        },
       });
 
-      return () => mm.revert();
+      return () => tween.kill();
     },
     { scope: sectionRef }
   );
 
   return (
-    <section
-      id="gallery"
-      ref={sectionRef}
-      data-lenis-prevent
-      className="no-scrollbar relative h-screen w-full overflow-x-auto overflow-y-hidden bg-bg md:overflow-hidden"
-    >
+    <section id="gallery" ref={sectionRef} className="relative h-screen w-full overflow-hidden bg-bg">
       <div className="pointer-events-none absolute inset-x-0 top-0 z-10 flex items-center justify-between px-6 pt-[calc(var(--nav-h)+1.5rem)] md:px-10">
         <p className="eyebrow">The Gallery</p>
         <p className="font-display text-[11px] uppercase tracking-[0.2em] text-muted">Scroll</p>
