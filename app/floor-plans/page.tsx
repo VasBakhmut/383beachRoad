@@ -33,6 +33,33 @@ export default function FloorPlansPage() {
         </RevealSlide>
       </section>
 
+      <section id="plan" className="border-t border-line px-6 py-24 md:px-10 md:py-32 lg:px-16">
+        <RevealSlide direction="left" className="mb-12">
+          <p className="eyebrow mb-6">Architectural Plan</p>
+          <h2 className="font-display max-w-xl text-4xl font-semibold leading-[1.02] tracking-tight sm:text-5xl">
+            One vertical
+            <br />
+            sequence.
+          </h2>
+          <p className="font-display mt-5 text-[11px] uppercase tracking-[0.2em] text-muted">
+            Basement &middot; Ground floor &middot; First floor &middot; Rooftop
+          </p>
+        </RevealSlide>
+
+        <RevealSlide direction="up">
+          <div className="relative w-full overflow-hidden rounded-sm border border-line bg-panel p-4 md:p-8">
+            <Image
+              src="/images/floor-plans.webp"
+              alt="Floor plans for 383B Beach Road — basement, ground floor, first floor, rooftop and site plan"
+              width={3000}
+              height={1462}
+              sizes="100vw"
+              className="h-auto w-full"
+            />
+          </div>
+        </RevealSlide>
+      </section>
+
       {levels.map((level, i) => (
         <section
           key={level.key}
@@ -74,33 +101,6 @@ export default function FloorPlansPage() {
           </div>
         </section>
       ))}
-
-      <section id="plan" className="border-t border-line px-6 py-24 md:px-10 md:py-32 lg:px-16">
-        <RevealSlide direction="left" className="mb-12">
-          <p className="eyebrow mb-6">Architectural Plan</p>
-          <h2 className="font-display max-w-xl text-4xl font-semibold leading-[1.02] tracking-tight sm:text-5xl">
-            One vertical
-            <br />
-            sequence.
-          </h2>
-          <p className="font-display mt-5 text-[11px] uppercase tracking-[0.2em] text-muted">
-            Basement &middot; Ground floor &middot; First floor &middot; Rooftop
-          </p>
-        </RevealSlide>
-
-        <RevealSlide direction="up">
-          <div className="relative w-full overflow-hidden rounded-sm border border-line bg-panel p-4 md:p-8">
-            <Image
-              src="/images/floor-plans.webp"
-              alt="Floor plans for 383B Beach Road — basement, ground floor, first floor, rooftop and site plan"
-              width={3000}
-              height={1462}
-              sizes="100vw"
-              className="h-auto w-full"
-            />
-          </div>
-        </RevealSlide>
-      </section>
 
       <section className="border-t border-line px-6 py-24 text-center md:px-10 lg:px-16">
         <RevealSlide direction="up">
